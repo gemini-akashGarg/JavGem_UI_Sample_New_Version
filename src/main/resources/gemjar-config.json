@@ -1,0 +1,17 @@
+{
+  "environment": "beta",
+  "projectName": "GemJar-UI",
+  "reportName": "GemJar UI Sample Report",
+  "gemjarUserName": "Pawan Deep",
+  "gemjarSubID": "test_id",
+  "dev": {
+    "browserName": "firefox",
+    "launchUrl": "https://www.amazon.in",
+    "browserTimeout": 100
+},
+  "beta": {
+    "browserName": "chrome",
+    "launchUrl": "https://www.amazon.in",
+    "browserTimeout": 100
+  }
+}
