@@ -7,12 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="JavGem_UI_Sample-gem-vivekanand" />
+        <module name="JavGem_UI_Sample_New_Version" />
         <module name="Quantic_Amazon_testcases" />
         <module name="JavGem_UI_Sample" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="JavGem_UI_Sample_New_Version" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

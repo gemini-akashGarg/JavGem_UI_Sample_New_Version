@@ -1,6 +1,7 @@
 package com.qa.Quantic_sample.Pages;
 
 
+import com.gemini.generic.exception.GemException;
 import com.gemini.generic.reporting.GemTestReporter;
 import com.gemini.generic.reporting.STATUS;
 import com.gemini.generic.ui.utils.DriverAction;
@@ -30,7 +31,7 @@ public class Amazon {
         DriverAction.maximizeBrowser();
         GemTestReporter.addTestStep("action", "Maximize browser", STATUS.PASS);
         GemTestReporter.addTestStep("Size of browser", DriverAction.getBrowserSize().toString(), STATUS.PASS);
-        DriverAction.setBrowserSize(1200, 644, true);
+        DriverAction.setBrowserSize(1200, 644);
         DriverAction.waitSec(2);
         GemTestReporter.addTestStep("Browser Location", DriverAction.getBrowserLocation().toString(), STATUS.PASS);
     }
@@ -40,7 +41,7 @@ public class Amazon {
 
     }
 
-    public static void firstResultPrice(String item) throws IOException {
+    public static void firstResultPrice(String item) throws IOException, GemException {
         Common_functions.search(item);
         DriverAction.setImplicitTimeOut(5);
         DriverAction.setScriptTimeOut(5);
@@ -58,7 +59,7 @@ public class Amazon {
         DriverAction.switchToWindow(newTb.get(0));
     }
 
-    public static void lowToHigh(String item) throws IOException {
+    public static void lowToHigh(String item) throws IOException, GemException {
         Common_functions.search(item);
         DriverAction.setImplicitTimeOut(5);
         DriverAction.setScriptTimeOut(5);
@@ -92,7 +93,7 @@ public class Amazon {
         }
     }
 
-    public static void highToLow(String item) throws IOException {
+    public static void highToLow(String item) throws IOException, GemException {
         Common_functions.search(item);
         DriverAction.setImplicitTimeOut(5);
         DriverAction.setScriptTimeOut(5);
@@ -138,14 +139,14 @@ public class Amazon {
         DriverAction.maximizeBrowser();
         GemTestReporter.addTestStep("action", "Maximize browser", STATUS.PASS);
         GemTestReporter.addTestStep("Size of browser", DriverAction.getBrowserSize().toString(), STATUS.PASS);
-        DriverAction.setBrowserSize(1200, 644, true);
+        DriverAction.setBrowserSize(1200, 644);
         DriverAction.waitSec(2);
-        DriverAction.setBrowserSize(1200, 644, true);
+        DriverAction.setBrowserSize(1200, 644);
         DriverAction.waitSec(2);
         GemTestReporter.addTestStep("Browser Location", DriverAction.getBrowserLocation().toString(), STATUS.PASS);
     }
 
-    public static void maxPrice(String item) throws IOException {
+    public static void maxPrice(String item) throws IOException, GemException {
         Common_functions.search(item);
         DriverAction.setImplicitTimeOut(5);
         DriverAction.setScriptTimeOut(5);
@@ -165,7 +166,7 @@ public class Amazon {
         DriverAction.switchToWindow(newTb.get(0));
     }
 
-    public static void minPrice(String item) throws IOException {
+    public static void minPrice(String item) throws IOException, GemException {
         Common_functions.search(item);
         DriverAction.setImplicitTimeOut(5);
         DriverAction.setScriptTimeOut(5);
@@ -183,7 +184,7 @@ public class Amazon {
         DriverAction.switchToWindow(newTb.get(0));
     }
 
-    public static void diffMaxMin(String item) throws IOException {
+    public static void diffMaxMin(String item) throws IOException, GemException {
         Common_functions.search(item);
         DriverAction.setImplicitTimeOut(5);
         DriverAction.setScriptTimeOut(5);
@@ -201,7 +202,7 @@ public class Amazon {
         GemTestReporter.addTestStep("first result", "Name:" + DriverAction.getElementText(Amazon_locators.tittle) + "<br>Price:" + DriverAction.getElementText(Amazon_locators.price), STATUS.PASS, takeSnapShot());
         DriverManager.closeDriver();
         DriverAction.switchToWindow(newTb.get(0));
-        DriverAction.navigateRefresh();
+        DriverAction.refresh();
         DriverAction.click(Amazon_locators.pricedrpdwn, "Sort by:");
         DriverAction.click(Amazon_locators.low_high, "low to high");
         DriverAction.waitSec(2);
@@ -317,7 +318,7 @@ public class Amazon {
         GemTestReporter.addTestStep("Price", DriverAction.getElementText(Amazon_locators.price), STATUS.PASS);
     }
 
-    public static void cartAfterAdding(String item) throws IOException {
+    public static void cartAfterAdding(String item) throws IOException, GemException {
         Common_functions.search(item);
         DriverAction.click(Amazon_locators.first_result, "first result");
         ArrayList<String> newTb = new ArrayList<>(DriverAction.getWindowHandles());
@@ -327,9 +328,9 @@ public class Amazon {
         String temp1 = DriverAction.getElementText(Amazon_locators.tittle);
         DriverAction.click(Amazon_locators.addToCart, "Add to cart");
         DriverAction.waitSec(3);
-        DriverAction.navigateRefresh();
+        DriverAction.refresh();
         DriverAction.click(Amazon_locators.cart_icon, "Cart");
-        DriverAction.navigateRefresh();
+        DriverAction.refresh();
         String temp2 = DriverAction.getElementText(Amazon_locators.cartTitle);
         String a = temp1.substring(0, 30);
         String b = temp2.substring(0, 30);
@@ -373,7 +374,7 @@ public class Amazon {
         DriverAction.maximizeBrowser();
         GemTestReporter.addTestStep("action", "Maximize browser", STATUS.PASS);
         GemTestReporter.addTestStep("Size of browser", DriverAction.getBrowserSize().toString(), STATUS.PASS);
-        DriverAction.setBrowserSize(1200, 644, true);
+        DriverAction.setBrowserSize(1200, 644);
         DriverAction.waitSec(2);
         GemTestReporter.addTestStep("Browser Location", DriverAction.getBrowserLocation().toString(), STATUS.PASS);
     }
@@ -397,7 +398,7 @@ public class Amazon {
         }
     }
 
-    public static void addItemRemove(String item) throws IOException {
+    public static void addItemRemove(String item) throws IOException, GemException {
         Common_functions.search(item);
         DriverAction.waitSec(2);
         DriverAction.click(Amazon_locators.first_result, "result");
@@ -406,11 +407,11 @@ public class Amazon {
         GemTestReporter.addTestStep("Action", "Switching control to new Tab", STATUS.PASS);
         DriverAction.waitSec(3);
         DriverAction.click(Amazon_locators.addToCart, "Add to cart");
-        DriverAction.navigateRefresh();
+        DriverAction.refresh();
         DriverAction.click(Amazon_locators.cart_icon, "Cart");
         DriverAction.waitSec(2);
         DriverAction.click(Amazon_locators.cartDel, "Delete");
-        DriverAction.navigateRefresh();
+        DriverAction.refresh();
         String s = DriverAction.getElementText(Amazon_locators.cartCount);
         if (s.equals("0")) {
             GemTestReporter.addTestStep("Validate", "Cart is Empty", STATUS.PASS, takeSnapShot());
@@ -421,7 +422,7 @@ public class Amazon {
         DriverAction.switchToWindow(newTb.get(0));
     }
 
-    public static void cartValidateAfterNavigate(String item) throws IOException {
+    public static void cartValidateAfterNavigate(String item) throws IOException, GemException {
         Common_functions.search(item);
         DriverAction.click(Amazon_locators.first_result, "first result");
         ArrayList<String> newTb = new ArrayList<>(DriverAction.getWindowHandles());
@@ -442,13 +443,13 @@ public class Amazon {
         } else {
             GemTestReporter.addTestStep("Validation", "Unsuccessful to add", STATUS.FAIL, takeSnapShot());
         }
-        DriverAction.navigateToUrl("https://www.google.com/", true);
+        DriverAction.navigateToUrl("https://www.google.com/");
         DriverAction.waitSec(2);
-        DriverAction.navigateBack(true);
+        DriverAction.navigateBack();
         DriverAction.waitSec(2);
-        DriverAction.navigateForward(true);
+        DriverAction.navigateForward();
         DriverAction.waitSec(2);
-        DriverAction.navigateBack(true);
+        DriverAction.navigateBack();
         DriverAction.waitSec(2);
         String temp11 = verify.substring(0, 30);
         String temp22 = DriverAction.getElementText(Amazon_locators.cartTitle);
@@ -469,7 +470,7 @@ public class Amazon {
         DriverAction.waitSec(2);
         DriverAction.navigateBack();
         DriverAction.waitSec(2);
-        DriverAction.navigateForward(true);
+        DriverAction.navigateForward();
         DriverAction.waitSec(2);
         DriverAction.navigateBack();
         DriverAction.waitSec(2);
@@ -481,7 +482,7 @@ public class Amazon {
         }
     }
 
-    public static void validateCount(String item, String item2) throws IOException {
+    public static void validateCount(String item, String item2) throws IOException, GemException {
         Common_functions.search(item);
         DriverAction.click(Amazon_locators.first_result, "first result");
         ArrayList<String> newTb = new ArrayList<>(DriverAction.getWindowHandles());
@@ -493,7 +494,7 @@ public class Amazon {
         DriverAction.waitSec(2);
         GemTestReporter.addTestStep("Action", temp1 + " Successfully added in Cart", STATUS.PASS);
         DriverAction.click(Amazon_locators.cart_icon, "Cart");
-        DriverAction.navigateRefresh();
+        DriverAction.refresh();
         DriverManager.closeDriver();
         DriverAction.switchToWindow(newTb.get(0));
         DriverAction.navigateBack();
@@ -508,14 +509,14 @@ public class Amazon {
         DriverAction.waitSec(2);
         GemTestReporter.addTestStep("Action", temp2 + " Successfully added in Cart", STATUS.PASS);
         DriverAction.click(Amazon_locators.cart_icon, "Cart");
-        DriverAction.navigateRefresh();
+        DriverAction.refresh();
         String count = DriverAction.getElementText(Amazon_locators.cartCount);
         GemTestReporter.addTestStep("Total items present in Cart", "1: " + temp1 + "<br>" + "2: " + temp2 + "<br>" + "Count: " + count, STATUS.PASS, takeSnapShot());
         DriverManager.closeDriver();
         DriverAction.switchToWindow(newTb1.get(0));
     }
 
-    public static void totalCountSameItem(String item) throws IOException {
+    public static void totalCountSameItem(String item) throws IOException, GemException {
         Common_functions.search(item);
         DriverAction.waitSec(2);
         DriverAction.click(Amazon_locators.first_result, "result");
@@ -523,15 +524,15 @@ public class Amazon {
         GemTestReporter.addTestStep("Action", "Switching control to new Tab", STATUS.PASS);
         DriverAction.switchToWindow(newTb.get(1));
         DriverAction.click(Amazon_locators.addToCart, "Add to cart");
-        DriverAction.navigateBack(true);
-        DriverAction.navigateRefresh();
+        DriverAction.navigateBack();
+        DriverAction.refresh();
         DriverAction.click(Amazon_locators.cart_icon, "cart");
         DriverAction.waitSec(2);
         String temp2 = DriverAction.getElementText(Amazon_locators.cartTitle);
         DriverAction.click(Amazon_locators.cartDrpDwn, "drop-down");
         DriverAction.waitSec(2);
         DriverAction.click(Amazon_locators.Quantity, "2");
-        DriverAction.navigateRefresh();
+        DriverAction.refresh();
         DriverAction.waitSec(2);
         String count = DriverAction.getElementText(Amazon_locators.cartCount);
         GemTestReporter.addTestStep("Total items present in Cart", temp2 + "<br>" + count, STATUS.PASS, takeSnapShot());
